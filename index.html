@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HT Digital Skills — Learn • Practice • Connect • Succeed</title>
+<meta name="description" content="HT Digital Skills — premium digital skills academy. YouTube Automation, Digital Marketing, Video Editing, Web Development, SEO and more.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0e0a06;
+    --black-2:#17100a;
+    --black-3:#211609;
+    --gold:#c9a227;
+    --gold-2:#f1d47a;
+    --gold-3:#8a641c;
+    --bronze:#9a6432;
+    --gold-grad:linear-gradient(135deg,#7c5518 0%,#c9a227 32%,#ffe9a8 52%,#f1d47a 68%,#9a6432 100%);
+    --text:#f7edd8;
+    --muted:#c9b491;
+    --line:rgba(201,162,39,.34);
+    --danger:#e0655f;
+    --ok:#7bc47f;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    overflow-x:hidden;
+    line-height:1.55;
+  }
+  img{max-width:100%;display:block}
+  a{color:var(--gold-2);text-decoration:none}
+  button{font-family:inherit;cursor:pointer}
+  input,select,textarea{
+    font-family:inherit;font-size:16px;color:var(--text);
+    background:#0b0703;border:1px solid var(--line);border-radius:10px;
+    padding:13px 14px;width:100%;outline:none;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+  label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.04em;color:var(--muted);margin:0 0 6px;text-transform:uppercase}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Gold text / headings ---------- */
+  .gold-text{
+    background:var(--gold-grad);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  h1,h2,.serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .kicker{
+    text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;
+    color:var(--gold);font-weight:700;text-align:center;
+  }
+  .section{padding:70px 0}
+  .section-title{
+    font-size:clamp(2rem,5vw,3rem);font-weight:700;text-align:center;line-height:1.1;margin:10px 0 8px;
+  }
+  .section-sub{color:var(--muted);text-align:center;max-width:640px;margin:0 auto}
+  .gold-rule{width:110px;height:2px;background:var(--gold-grad);margin:18px auto 0;border-radius:2px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(14,10,6,.95);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0}
+  .brand{display:flex;align-items:center;gap:12px;cursor:pointer;flex-shrink:0}
+  .brand-logo-img{width:52px;height:52px;object-fit:contain;object-position:center;background:transparent;border:none;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+  .footer-logo-img{width:64px;height:64px;object-fit:contain;object-position:center;background:transparent;border:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+  .logo{text-align:center;line-height:1}
+  .logo .crown{font-size:1.15rem;color:var(--gold);display:block;line-height:.8;text-shadow:0 0 14px rgba(201,162,39,.6)}
+  .logo .ht{
+    font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;
+    font-size:1.9rem;letter-spacing:.06em;line-height:.95;
+    background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .logo .ht-sub{font-size:.5rem;letter-spacing:.34em;color:var(--gold-2);font-weight:700;margin-top:2px}
+  .brand-name{line-height:1.15}
+  .brand-name .bn-1{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:700;letter-spacing:.05em}
+  .brand-name .bn-2{font-size:.6rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+  nav.main-nav{display:flex;align-items:center;gap:26px}
+  nav.main-nav a{color:var(--text);font-size:.92rem;font-weight:500}
+  nav.main-nav a:hover{color:var(--gold-2)}
+  .header-actions{display:flex;align-items:center;gap:10px;flex:none}
+  #authArea{display:flex;align-items:center;gap:9px;flex-wrap:nowrap}
+  #authArea .btn{white-space:nowrap}
+  #mobileAuthArea{display:block}
+  .hamburger{
+    display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;
+    background:transparent;color:var(--gold-2);font-size:1.3rem;line-height:1;cursor:pointer;flex:none;
+  }
+  /* ---------- Right slide-in drawer menu ---------- */
+  .drawer{
+    position:fixed;top:0;right:0;height:100dvh;width:min(330px,86vw);z-index:1200;
+    background:#150e07;border-left:1px solid var(--gold);box-shadow:-18px 0 40px rgba(0,0,0,.55);
+    transform:translateX(105%);transition:transform .3s ease;padding:20px 22px 30px;overflow-y:auto;
+  }
+  .drawer.open{transform:translateX(0)}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .drawer-head .dt{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:var(--gold-2);font-weight:700;letter-spacing:.04em}
+  .drawer-close{
+    width:40px;height:40px;border:1px solid var(--line);border-radius:10px;background:transparent;
+    color:var(--gold-2);font-size:1.15rem;cursor:pointer;line-height:1;
+  }
+  .drawer a{
+    display:block;width:100%;text-align:left;padding:15px 8px;min-height:50px;
+    color:var(--text);font-size:1rem;font-weight:600;
+    border-bottom:1px solid rgba(201,162,39,.14);
+  }
+  .drawer a:hover{color:var(--gold-2)}
+  .drawer .drawer-label{margin:18px 8px 4px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .drawer a.auth-action{
+    display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:10px;
+    padding:12px 18px;border-radius:999px;text-align:center;font-weight:800;
+  }
+  .drawer a.auth-login{border:1px solid var(--gold);color:var(--gold-2);background:rgba(201,162,39,.06)}
+  .drawer a.auth-signup{border:1px solid transparent;background:var(--gold-grad);color:#201304}
+  .drawer a.auth-signup:hover{color:#201304;filter:brightness(1.07)}
+  .scrim{
+    position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1100;
+    opacity:0;pointer-events:none;transition:opacity .3s ease;
+  }
+  .scrim.open{opacity:1;pointer-events:auto}
+
+  /* ---------- How It Works steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  .step{
+    border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;
+    background:linear-gradient(180deg,#121210,#0c0c0b);
+  }
+  .step .snum{
+    width:46px;height:46px;margin:0 auto 14px;border-radius:50%;border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--gold-2);font-size:1.05rem;
+    background:rgba(201,162,39,.08);
+  }
+  .step h3{font-size:1.05rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.9rem}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:48px;padding:12px 26px;border-radius:999px;border:1px solid var(--gold);
+    font-weight:700;font-size:.95rem;letter-spacing:.02em;transition:.2s;text-align:center;
+  }
+  .btn-gold{background:var(--gold-grad);color:#201304;border-color:transparent}
+  .btn-gold:hover{filter:brightness(1.08)}
+  .btn-outline{background:transparent;color:var(--gold-2)}
+  .btn-outline:hover{background:rgba(201,162,39,.12)}
+  .btn-wa{background:var(--gold-grad);color:#201304;border-color:transparent}
+  .btn-wa:hover{filter:brightness(1.08)}
+  .btn-sm{min-height:40px;padding:8px 18px;font-size:.85rem}
+  .btn-danger{background:transparent;border-color:var(--danger);color:var(--danger)}
+  .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;text-align:center;padding:92px 0 80px;
+    background:
+      radial-gradient(760px 360px at 50% -60px, rgba(241,212,122,.22), transparent 66%),
+      radial-gradient(520px 260px at 85% 20%, rgba(154,100,50,.12), transparent 70%),
+      linear-gradient(180deg,#191006, var(--black));
+    border-bottom:1px solid var(--line);
+  }
+  .hero .crown-big{font-size:2rem;color:var(--gold);text-shadow:0 0 22px rgba(201,162,39,.65)}
+  .hero h1{font-size:clamp(2.6rem,7.5vw,4.6rem);font-weight:700;line-height:1.05;margin-top:8px}
+  .tagline{margin-top:16px;letter-spacing:.34em;font-size:clamp(.66rem,2.6vw,.9rem);color:var(--gold-2);font-weight:700;text-transform:uppercase}
+  .hero p.lead{color:var(--muted);max-width:620px;margin:18px auto 0;font-size:1.03rem}
+  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:48px}
+  .stat{
+    border:1px solid var(--line);border-radius:var(--radius);background:rgba(201,162,39,.05);
+    padding:16px 26px;min-width:150px;
+  }
+  .stat .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:700}
+  .stat .lbl{font-size:.7rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+
+  /* ---------- Pillars ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
+  .pillar{
+    border:1px solid var(--line);border-radius:var(--radius);background:var(--black-2);
+    padding:26px 14px;text-align:center;
+  }
+  .pillar .ic{font-size:1.7rem;color:var(--gold)}
+  .pillar h3{font-size:.92rem;margin-top:10px;letter-spacing:.04em}
+  .pillar p{font-size:.78rem;color:var(--muted);margin-top:4px}
+
+  /* ---------- Courses ---------- */
+  .courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px;align-items:stretch}
+  .course-card{
+    border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,var(--black-3),var(--black-2));
+    padding:0;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.22);min-width:0;height:100%;
+  }
+  .course-media{aspect-ratio:1/1;width:100%;overflow:hidden;background:#090604;border-bottom:1px solid var(--line);flex:none;margin:0}
+  .course-img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;display:block}
+  .course-body{padding:11px 12px 12px;display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+  .course-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;font-weight:700;color:var(--gold-2);line-height:1.15;overflow-wrap:anywhere}
+  .course-meta{display:flex;gap:5px;flex-wrap:wrap}
+  .chip{font-size:.62rem;font-weight:700;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:2px 7px;color:var(--gold-2);background:rgba(201,162,39,.08);white-space:nowrap}
+  .course-card p{color:var(--muted);font-size:.78rem;line-height:1.4;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+  .course-card .btn{margin-top:4px;width:100%;min-height:38px;padding:8px 10px;font-size:.78rem}
+
+  /* ---------- Founder ---------- */
+  .founder{
+    display:grid;grid-template-columns: 420px 1fr;gap:40px;align-items:center;margin-top:44px;
+    padding:10px 0 0;background:transparent;
+  }
+  #founder{padding-bottom:30px}
+  .founder img{border-radius:14px;border:none;box-shadow:0 12px 34px rgba(0,0,0,.45);width:100%;display:block}
+  .founder h3{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:700;line-height:1.1}
+  .role-badge{
+    display:inline-block;margin-top:10px;padding:7px 18px;border-radius:6px;
+    background:var(--gold-grad);color:#201304;font-weight:800;letter-spacing:.14em;font-size:.75rem;text-transform:uppercase;
+  }
+  .founder p{color:var(--muted);margin-top:16px;max-width:520px}
+  .founder .hero-cta{justify-content:flex-start;margin-top:24px}
+
+  /* ---------- Forms / panels ---------- */
+  .panel{
+    max-width:560px;margin:40px auto 0;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(180deg,var(--black-3),var(--black-2));padding:30px 26px;
+  }
+  .panel h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:var(--gold-2);text-align:center}
+  .panel .panel-sub{color:var(--muted);font-size:.9rem;text-align:center;margin:6px 0 20px}
+  .field{margin-bottom:16px}
+  .form-msg{border-radius:10px;padding:12px 14px;font-size:.9rem;margin-bottom:16px;display:none}
+  .form-msg.show{display:block}
+  .form-msg.err{background:rgba(224,101,95,.12);border:1px solid var(--danger);color:#f0b3af}
+  .form-msg.ok{background:rgba(123,196,127,.12);border:1px solid var(--ok);color:#bfe6c1}
+  .form-msg.info{background:rgba(201,162,39,.10);border:1px solid var(--line);color:var(--gold-2)}
+  .switch-line{text-align:center;color:var(--muted);font-size:.9rem;margin-top:18px}
+  .auth-panel{
+    max-width:540px;padding:38px 34px;border-color:rgba(201,162,39,.52);
+    background:radial-gradient(420px 180px at 50% 0%,rgba(201,162,39,.13),transparent 70%),linear-gradient(180deg,#181713,#0e0e0d);
+    box-shadow:0 24px 60px rgba(0,0,0,.38);
+  }
+  .auth-emblem{
+    width:58px;height:58px;margin:0 auto 14px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:1.65rem;
+    background:rgba(201,162,39,.08);box-shadow:0 0 24px rgba(201,162,39,.16);
+  }
+  .auth-panel input{min-height:50px;background:#090908}
+  .auth-panel button[type="submit"]{min-height:52px;font-size:1rem;width:100%}
+  .auth-footnote{margin-top:18px;text-align:center;color:var(--muted);font-size:.82rem;line-height:1.5}
+  .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .choice{
+    border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:center;background:rgba(201,162,39,.04)
+  }
+  .choice h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;color:var(--gold-2)}
+  .choice p{color:var(--muted);font-size:.84rem;margin:6px 0 14px}
+
+  /* ---------- Dashboard ---------- */
+  .dash-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:36px}
+  .dash-head h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;color:var(--gold-2)}
+  .dash-head p{color:var(--muted);font-size:.9rem}
+  .cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .mini-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--black-2);padding:18px;text-align:center}
+  .mini-card .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:700}
+  .mini-card .lbl{font-size:.68rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+  .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;align-items:start}
+  .box{border:1px solid var(--line);border-radius:var(--radius);background:var(--black-2);padding:22px}
+  .box h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;color:var(--gold-2);margin-bottom:6px}
+  .box .box-sub{color:var(--muted);font-size:.85rem;margin-bottom:16px}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:10px 8px;border-bottom:1px solid rgba(201,162,39,.15);text-align:left;vertical-align:top}
+  th{color:var(--gold-2);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
+  .status-pill{font-size:.7rem;font-weight:800;letter-spacing:.06em;border-radius:999px;padding:3px 10px;text-transform:uppercase;white-space:nowrap}
+  .st-new{background:rgba(201,162,39,.16);color:var(--gold-2);border:1px solid var(--line)}
+  .st-contacted{background:rgba(120,170,255,.14);color:#a9c8ff;border:1px solid rgba(120,170,255,.4)}
+  .st-enrolled{background:rgba(123,196,127,.14);color:#bfe6c1;border:1px solid rgba(123,196,127,.4)}
+  .st-rejected{background:rgba(224,101,95,.14);color:#f0b3af;border:1px solid rgba(224,101,95,.4)}
+  .row-actions{display:flex;gap:6px;flex-wrap:wrap}
+  .row-actions select{width:auto;padding:7px 8px;font-size:.8rem}
+  .icon-btn{min-height:34px;padding:6px 12px;border-radius:8px;font-size:.78rem;font-weight:700}
+  .list-item{border:1px solid rgba(201,162,39,.18);border-radius:10px;padding:14px;margin-bottom:10px;background:rgba(201,162,39,.03)}
+  .list-item .li-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+  .list-item .li-name{font-weight:700}
+  .list-item .li-meta{color:var(--muted);font-size:.82rem;margin-top:3px}
+  .empty-note{color:var(--muted);font-size:.9rem;text-align:center;padding:18px 6px}
+
+  /* ---------- CTA / contact / footer ---------- */
+  .cta-band{
+    border:1px solid var(--line);border-radius:20px;text-align:center;padding:54px 26px;
+    background:radial-gradient(560px 220px at 50% 0%, rgba(201,162,39,.16), transparent 70%), var(--black-2);
+  }
+  .cta-band h2{font-size:clamp(1.9rem,5vw,2.8rem)}
+  .cta-band p{color:var(--muted);margin:10px auto 24px;max-width:520px}
+  footer{border-top:1px solid var(--line);padding:54px 0 30px;background:#0a0603}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  footer h5{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;color:var(--gold-2);margin-bottom:12px}
+  footer p,footer a{color:var(--muted);font-size:.9rem}
+  footer a:hover{color:var(--gold-2)}
+  .footer-links a{display:block;margin-bottom:8px}
+  .copyright{border-top:1px solid rgba(201,162,39,.15);margin-top:36px;padding-top:20px;text-align:center;color:var(--muted);font-size:.8rem}
+  .hidden{display:none !important}
+  @media (max-width:1120px){
+    nav.main-nav{gap:16px}
+    .brand-name{display:none}
+  }
+  @media (max-width:700px){
+    #authArea{display:none}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1200px){
+    .courses-grid{gap:14px}
+  }
+  @media (max-width:1020px){
+    .pillars{grid-template-columns:repeat(3,1fr)}
+    .courses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .founder{grid-template-columns:1fr;gap:26px}
+    .founder img{max-width:460px;margin:0 auto}
+    .cards-row{grid-template-columns:repeat(2,1fr)}
+    .dash-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:860px){
+    nav.main-nav{display:none}
+    .hamburger{display:inline-flex;align-items:center;justify-content:center}
+    .brand-name{display:none}
+    .header-actions .btn{padding:10px 16px}
+  }
+  @media (max-width:560px){
+    .section{padding:56px 0}
+    #founder{padding-bottom:24px}
+    .founder{gap:22px}
+    .pillars{grid-template-columns:1fr 1fr}
+    .courses-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .course-body{padding:10px}
+    .course-card h3{font-size:.98rem}
+    .course-card p{font-size:.72rem;-webkit-line-clamp:2}
+    .course-card .btn{min-height:40px;font-size:.7rem;padding:7px 6px}
+    .choice-grid{grid-template-columns:1fr}
+    .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+    .stat{min-width:0;padding:12px 6px}
+    .stat .num{font-size:1.35rem}
+    .hero{padding:64px 0 58px}
+    .hero-cta .btn{width:100%}
+    .founder .hero-cta .btn{width:100%}
+    .panel{padding:24px 18px}
+    .footer-grid{grid-template-columns:1fr}
+    table{font-size:.8rem}
+    th,td{padding:8px 5px}
+  }
+  @media (max-width:420px){
+    .courses-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .brand-logo-img{width:46px;height:46px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap header-in">
+    <div class="brand" onclick="showView('home')">
+      <img class="brand-logo-img" src="logo.png" alt="HT Digital Skills logo" width="56" height="56">
+      <div class="brand-name">
+        <div class="bn-1 gold-text">HT DIGITAL SKILLS</div>
+        <div class="bn-2">Learn &bull; Practice &bull; Connect &bull; Succeed</div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="#" onclick="showView('home');return false;">Home</a>
+      <a href="#courses" onclick="scrollToId('courses');return false;">Courses</a>
+      <a href="#why-us" onclick="scrollToId('why-us');return false;">Why Us</a>
+      <a href="#founder" onclick="scrollToId('founder');return false;">Founder</a>
+      <a href="#how-it-works" onclick="scrollToId('how-it-works');return false;">How It Works</a>
+      <a href="#contact" onclick="scrollToId('contact');return false;">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <span id="authArea">
+        <button class="btn btn-outline btn-sm" onclick="showView('login')">Login</button>
+        <button class="btn btn-gold btn-sm" onclick="showView('signup')">Sign Up</button>
+      </span>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">&#9776;</button>
+    </div>
+  </div>
+
+</header>
+
+<div class="scrim" id="menuScrim"></div>
+<aside class="drawer" id="mobileMenu" aria-label="Site menu">
+  <div class="drawer-head">
+    <span class="dt">Menu</span>
+    <button class="drawer-close" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+  </div>
+  <a href="#courses" onclick="scrollToId('courses');closeMenu();return false;">Courses</a>
+  <a href="#why-us" onclick="scrollToId('why-us');closeMenu();return false;">Why Us</a>
+  <a href="#founder" onclick="scrollToId('founder');closeMenu();return false;">Founder</a>
+  <a href="#how-it-works" onclick="scrollToId('how-it-works');closeMenu();return false;">How It Works</a>
+  <a href="#contact" onclick="scrollToId('contact');closeMenu();return false;">Contact</a>
+  <div class="drawer-label">Get Started</div>
+  <a href="#" onclick="showView('home');closeMenu();return false;">Home</a>
+  <a href="#" onclick="showView('enroll');closeMenu();return false;">Enroll Now</a>
+  <span id="mobileAuthArea">
+    <a class="auth-action auth-login" href="#" onclick="showView('login');closeMenu();return false;">Login</a>
+    <a class="auth-action auth-signup" href="#" onclick="showView('signup');closeMenu();return false;">Sign Up</a>
+  </span>
+</aside>
+
+<!-- ================= VIEW: HOME ================= -->
+<main id="view-home">
+  <section class="hero">
+    <div class="wrap">
+      <div class="crown-big">&#9819;</div>
+      <h1 class="gold-text">HT DIGITAL SKILLS</h1>
+      <div class="tagline">Learn &bull; Practice &bull; Connect &bull; Succeed</div>
+      <p class="lead">A premium digital skills academy. Learn practical, income-focused skills — from YouTube Automation and Digital Marketing to Video Editing, Web Development and E-Commerce.</p>
+      <div class="hero-cta">
+        <button class="btn btn-gold" onclick="showView('courses')">Explore Courses</button>
+        <a class="btn btn-wa" href="https://wa.me/923046004229?text=Assalam-o-Alaikum!%20I%20want%20course%20information%20from%20HT%20Digital%20Skills." target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <button class="btn btn-outline" onclick="showView('enroll')">Enroll Now</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num gold-text">10+</div><div class="lbl">Courses</div></div>
+        <div class="stat"><div class="num gold-text">5</div><div class="lbl">Learning Pillars</div></div>
+        <div class="stat"><div class="num gold-text">4</div><div class="lbl">Steps to Success</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why-us">
+    <div class="wrap">
+      <div class="kicker">Why HT Digital Skills</div>
+      <h2 class="section-title gold-text">Built On Five Pillars</h2>
+      <p class="section-sub">Everything we teach is practical, guided and focused on your career growth.</p>
+      <div class="gold-rule"></div>
+      <div class="pillars">
+        <div class="pillar"><div class="ic">&#127891;</div><h3>Digital Education</h3><p>Modern, in-demand digital skills.</p></div>
+        <div class="pillar"><div class="ic">&#127919;</div><h3>Practical Training</h3><p>Learn by doing real projects.</p></div>
+        <div class="pillar"><div class="ic">&#128200;</div><h3>Career Growth</h3><p>Skills that grow your income.</p></div>
+        <div class="pillar"><div class="ic">&#128737;</div><h3>Quality Learning</h3><p>Structured, quality-first teaching.</p></div>
+        <div class="pillar"><div class="ic">&#129309;</div><h3>Trust &amp; Support</h3><p>Guidance at every step.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="courses" style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker">Our Courses</div>
+      <h2 class="section-title gold-text">Popular Courses</h2>
+      <p class="section-sub">Choose your skill and start learning today.</p>
+      <div class="gold-rule"></div>
+      <div class="courses-grid" id="homeCourses"></div>
+      <div style="text-align:center;margin-top:30px">
+        <button class="btn btn-outline" onclick="showView('courses')">View All Courses</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="founder" style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker">Meet The Founder</div>
+      <h2 class="section-title gold-text">Founder &amp; CEO</h2>
+      <div class="founder">
+        <img src="founder-poster.png" alt="Hafiz Tabbasum — Founder & CEO, HT Digital Skills">
+        <div>
+          <h3 class="gold-text">HAFIZ TABBASUM</h3>
+          <span class="role-badge">Founder &amp; CEO</span>
+          <p>Hafiz Tabbasum founded HT Digital Skills with one mission: to give students practical digital skills that create real careers and real income. His teaching philosophy is simple — learn it, practice it, connect with opportunities, and succeed.</p>
+          <p style="margin-top:8px">Under his leadership, the academy focuses on quality learning, honest guidance and personal support for every student.</p>
+          <div class="hero-cta">
+            <a class="btn btn-wa" href="https://wa.me/923046004229?text=Assalam-o-Alaikum!%20I%20want%20course%20information%20from%20HT%20Digital%20Skills." target="_blank" rel="noopener">Chat on WhatsApp</a>
+            <button class="btn btn-gold" onclick="showView('enroll')">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works" style="padding-top:0">
+    <div class="wrap">
+      <div class="kicker">Simple Process</div>
+      <h2 class="section-title gold-text">How It Works</h2>
+      <p class="section-sub">Start learning in three simple steps.</p>
+      <div class="steps">
+        <div class="step"><div class="snum">1</div><h3>Start on WhatsApp or Sign Up</h3><p>Guests can message us on WhatsApp, or create a free student account on the website.</p></div>
+        <div class="step"><div class="snum">2</div><h3>Login &amp; Apply</h3><p>Login and submit your course application inside the website — and track its status anytime.</p></div>
+        <div class="step"><div class="snum">3</div><h3>Admin Confirms &amp; Classes Start</h3><p>Our team confirms your seat and guides you as your classes begin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band">
+        <div class="kicker">Start Today</div>
+        <h2 class="gold-text">Ready To Build Your Digital Skills?</h2>
+        <p>Talk to our team on WhatsApp or send your enrollment application online. We will guide you to the right course.</p>
+        <div class="hero-cta">
+          <button class="btn btn-gold" onclick="showView('enroll')">Enroll Now</button>
+          <a class="btn btn-outline" href="https://wa.me/923046004229" target="_blank" rel="noopener">+92 304 6004229</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: COURSES ================= -->
+<main id="view-courses" class="hidden">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">HT Digital Skills</div>
+      <h2 class="section-title gold-text">All Courses</h2>
+      <p class="section-sub">Practical, career-focused training. Fees and durations are shown on each course when available — or ask us on WhatsApp.</p>
+      <div class="gold-rule"></div>
+      <div class="courses-grid" id="allCourses"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: ENROLL ================= -->
+<main id="view-enroll" class="hidden">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">Admission</div>
+      <h2 class="section-title gold-text">Enroll Now</h2>
+      <p class="section-sub">Two easy ways to apply. Choose the one that suits you.</p>
+      <div class="gold-rule"></div>
+
+      <div class="choice-grid" style="max-width:860px;margin-left:auto;margin-right:auto">
+        <div class="choice">
+          <h4>Guest — WhatsApp</h4>
+          <p>No account needed. Fill the short form and your details open directly in WhatsApp.</p>
+          <button class="btn btn-wa" onclick="showGuestForm()">Continue as Guest</button>
+        </div>
+        <div class="choice">
+          <h4>Student — Website</h4>
+          <p>Login to your student account and submit your application inside the website. Track its status any time.</p>
+          <button class="btn btn-gold" id="studentApplyBtn" onclick="studentApplyEntry()">Student Apply</button>
+        </div>
+      </div>
+
+      <!-- Guest form -->
+      <div class="panel" id="guestPanel">
+        <h3>Guest Enrollment</h3>
+        <p class="panel-sub">Your details will open in WhatsApp, ready to send to our team.</p>
+        <div class="form-msg" id="guestMsg"></div>
+        <form id="guestForm">
+          <div class="field"><label for="gName">Full Name</label><input id="gName" required placeholder="Your full name"></div>
+          <div class="field"><label for="gPhone">Phone / WhatsApp Number</label><input id="gPhone" required placeholder="03xx xxxxxxx"></div>
+          <div class="field"><label for="gCourse">Select Course</label><select id="gCourse" required></select></div>
+          <div class="field"><label for="gMsg">Message (optional)</label><textarea id="gMsg" rows="3" placeholder="Any question?"></textarea></div>
+          <button class="btn btn-wa" type="submit" style="width:100%">Send on WhatsApp</button>
+        </form>
+      </div>
+
+      <!-- Logged-in website application form -->
+      <div class="panel hidden" id="webAppPanel">
+        <h3>Online Application</h3>
+        <p class="panel-sub">You are logged in. Submit your application here and track it in your dashboard.</p>
+        <div class="form-msg" id="webAppMsg"></div>
+        <form id="webAppForm">
+          <div class="field"><label for="wName">Full Name</label><input id="wName" required></div>
+          <div class="field"><label for="wPhone">Phone / WhatsApp Number</label><input id="wPhone" required></div>
+          <div class="field"><label for="wCourse">Select Course</label><select id="wCourse" required></select></div>
+          <div class="field"><label for="wMsg">Message (optional)</label><textarea id="wMsg" rows="3" placeholder="Any question?"></textarea></div>
+          <button class="btn btn-gold" type="submit" style="width:100%">Submit Application</button>
+          <button class="btn btn-wa" type="button" id="webAppWaBtn" style="width:100%;margin-top:10px">Send via WhatsApp Instead</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: LOGIN ================= -->
+<main id="view-login" class="hidden">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">Welcome Back</div>
+      <h2 class="section-title gold-text">Login</h2>
+      <div class="gold-rule"></div>
+      <div class="panel auth-panel">
+        <div class="auth-emblem" aria-hidden="true">&#9819;</div>
+        <h3>Login</h3>
+        <p class="panel-sub">Students and admin use the same login — your dashboard opens automatically.</p>
+        <div class="form-msg" id="loginMsg"></div>
+        <form id="loginForm">
+          <div class="field"><label for="lEmail">Email</label><input id="lEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="lPass">Password</label><input id="lPass" type="password" autocomplete="current-password" required placeholder="Your password"></div>
+          <button class="btn btn-gold" type="submit">Login to My Account</button>
+        </form>
+        <p class="switch-line">New here? <a href="#" onclick="showView('signup');return false;">Create an account</a></p>
+        <p class="auth-footnote">One login for everyone — students see the student dashboard, and the owner sees the admin dashboard.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: SIGNUP ================= -->
+<main id="view-signup" class="hidden">
+  <section class="section">
+    <div class="wrap">
+      <div class="kicker">Join HT Digital Skills</div>
+      <h2 class="section-title gold-text">Create Account</h2>
+      <div class="gold-rule"></div>
+      <div class="panel auth-panel">
+        <div class="auth-emblem" aria-hidden="true">&#9819;</div>
+        <h3>Sign Up</h3>
+        <p class="panel-sub">Create your free account, then login to open your dashboard.</p>
+        <div class="form-msg" id="signupMsg"></div>
+        <form id="signupForm">
+          <div class="field"><label for="sName">Full Name</label><input id="sName" autocomplete="name" required placeholder="Your full name"></div>
+          <div class="field"><label for="sPhone">Phone / WhatsApp Number</label><input id="sPhone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="03xx xxxxxxx"></div>
+          <div class="field"><label for="sEmail">Email</label><input id="sEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="sPass">Password</label><input id="sPass" type="password" autocomplete="new-password" required minlength="6" placeholder="Minimum 6 characters"></div>
+          <button class="btn btn-gold" type="submit">Create My Account</button>
+        </form>
+        <p class="switch-line">Already have an account? <a href="#" onclick="showView('login');return false;">Login</a></p>
+        <p class="auth-footnote">Your account lets you apply online and track your application status anytime.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: STUDENT DASHBOARD ================= -->
+<main id="view-student" class="hidden">
+  <section class="section" style="padding-top:40px">
+    <div class="wrap">
+      <div class="dash-head">
+        <div>
+          <div class="kicker" style="text-align:left">Student Dashboard</div>
+          <h3 id="studentWelcome">Welcome</h3>
+          <p id="studentMeta"></p>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="logout()">Logout</button>
+      </div>
+
+      <div class="dash-grid">
+        <div class="box">
+          <h4>Submit Application</h4>
+          <p class="box-sub">Apply for a course. Our team will contact you.</p>
+          <div class="form-msg" id="dashAppMsg"></div>
+          <form id="dashAppForm">
+            <div class="field"><label for="dCourse">Select Course</label><select id="dCourse" required></select></div>
+            <div class="field"><label for="dMsg">Message (optional)</label><textarea id="dMsg" rows="3" placeholder="Any question?"></textarea></div>
+            <button class="btn btn-gold" type="submit" style="width:100%">Submit Application</button>
+          </form>
+        </div>
+        <div class="box">
+          <h4>My Applications</h4>
+          <p class="box-sub">Your submitted applications and their current status.</p>
+          <div id="myApps"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= VIEW: ADMIN DASHBOARD ================= -->
+<main id="view-admin" class="hidden">
+  <section class="section" style="padding-top:40px">
+    <div class="wrap">
+      <div class="dash-head">
+        <div>
+          <div class="kicker" style="text-align:left">Admin Dashboard</div>
+          <h3>HT Digital Skills — Admin</h3>
+          <p id="adminMeta"></p>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="logout()">Logout</button>
+      </div>
+
+      <div class="form-msg" id="adminMsg" style="margin-top:18px"></div>
+
+      <div class="cards-row">
+        <div class="mini-card"><div class="num gold-text" id="countTotal">0</div><div class="lbl">Total Applications</div></div>
+        <div class="mini-card"><div class="num gold-text" id="countNew">0</div><div class="lbl">New</div></div>
+        <div class="mini-card"><div class="num gold-text" id="countEnrolled">0</div><div class="lbl">Enrolled</div></div>
+        <div class="mini-card"><div class="num gold-text" id="countCourses">0</div><div class="lbl">Courses</div></div>
+      </div>
+
+      <div class="box" style="margin-top:26px">
+        <h4>Applications</h4>
+        <p class="box-sub">Guest WhatsApp leads and student website applications appear here.</p>
+        <div class="field" style="max-width:260px">
+          <label for="appFilter">Filter by status</label>
+          <select id="appFilter" onchange="renderAdminApplications()">
+            <option value="all">All</option>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="enrolled">Enrolled</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Date</th><th>Student</th><th>Course</th><th>Source</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="adminAppsBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-note hidden" id="adminAppsEmpty">No applications yet.</div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="box">
+          <h4>Students</h4>
+          <p class="box-sub">Registered student accounts and their application counts.</p>
+          <div id="studentsList"></div>
+        </div>
+        <div class="box">
+          <h4>Courses</h4>
+          <p class="box-sub">Changes here appear on the public website automatically.</p>
+          <div class="form-msg" id="courseMsg"></div>
+          <form id="courseForm">
+            <input type="hidden" id="cId">
+            <div class="field"><label for="cName">Course Name</label><input id="cName" required placeholder="Course name"></div>
+            <div class="field"><label for="cFee">Fee (optional)</label><input id="cFee" placeholder="e.g. PKR 15,000"></div>
+            <div class="field"><label for="cDuration">Duration (optional)</label><input id="cDuration" placeholder="e.g. 2 Months"></div>
+            <div class="field"><label for="cDesc">Description (optional)</label><textarea id="cDesc" rows="3" placeholder="Short course description"></textarea></div>
+            <button class="btn btn-gold" type="submit" style="width:100%" id="courseSaveBtn">Add Course</button>
+            <button class="btn btn-outline hidden" type="button" id="courseCancelBtn" style="width:100%;margin-top:8px" onclick="resetCourseForm()">Cancel Edit</button>
+          </form>
+          <div id="coursesList" style="margin-top:18px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo-img" src="logo.png" alt="HT Digital Skills logo" width="62" height="62">
+        <h5 style="margin-top:14px">HT DIGITAL SKILLS</h5>
+        <p>Learn &bull; Practice &bull; Connect &bull; Succeed.<br>Practical digital skills for real careers.</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <div class="footer-links">
+          <a href="#" onclick="showView('home');return false;">Home</a>
+          <a href="#" onclick="showView('courses');return false;">Courses</a>
+          <a href="#" onclick="showView('enroll');return false;">Enroll Now</a>
+          <a href="#" onclick="showView('login');return false;">Login</a>
+        </div>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p>Phone / WhatsApp: <a href="https://wa.me/923046004229" target="_blank" rel="noopener">+92 304 6004229</a></p>
+        <p style="margin-top:6px">Email: <a href="mailto:htdigitalskills@gmail.com">htdigitalskills@gmail.com</a></p>
+        <p style="margin-top:6px">Web: <a href="https://htdigitalskills.vercel.app" target="_blank" rel="noopener">htdigitalskills.vercel.app</a></p>
+        <p style="margin-top:6px">Founder &amp; CEO: Hafiz Tabbasum</p>
+      </div>
+    </div>
+    <div class="copyright">&copy; 2026 HT Digital Skills. All rights reserved. | Founder &amp; CEO: Hafiz Tabbasum</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+/* ============================================================
+   HT DIGITAL SKILLS — APP LOGIC
+   Backend: Supabase (auth + database) via config.js
+   Without Supabase keys, the public site + WhatsApp still work.
+   ============================================================ */
+
+var WA_NUMBER = "923046004229";
+
+var FALLBACK_COURSES = [
+  { id: 1,  name: "YouTube Automation",  fee: "", duration: "", description: "Build and grow faceless YouTube channels with automation systems." },
+  { id: 2,  name: "Digital Marketing",   fee: "", duration: "", description: "Social media marketing, ads and brand growth strategies." },
+  { id: 3,  name: "Copyright Work",      fee: "", duration: "", description: "Learn professional copyright-safe content practices and workflows." },
+  { id: 4,  name: "Graphic Design",      fee: "", duration: "", description: "Design professional graphics, thumbnails and brand visuals." },
+  { id: 5,  name: "Video Editing",       fee: "", duration: "", description: "Edit cinematic videos for YouTube, TikTok and social media." },
+  { id: 6,  name: "Web Development",     fee: "", duration: "", description: "Build modern websites from scratch, step by step." },
+  { id: 7,  name: "SEO",                 fee: "", duration: "", description: "Rank websites and videos higher on Google and YouTube." },
+  { id: 8,  name: "TikTok Automation",   fee: "", duration: "", description: "Grow and automate TikTok content channels." },
+  { id: 9,  name: "Facebook Automation", fee: "", duration: "", description: "Automate and monetize Facebook pages professionally." },
+  { id: 10, name: "E-Commerce",          fee: "", duration: "", description: "Start and grow your own online store and sales system." }
+];
+
+var CONFIGURED = false;
+var sb = null;
+try {
+  var cfg = window.HT_CONFIG || {};
+  CONFIGURED = !!(
+    cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY &&
+    cfg.SUPABASE_URL.indexOf("http") === 0 &&
+    cfg.SUPABASE_URL.indexOf("PASTE") === -1 &&
+    cfg.SUPABASE_ANON_KEY.indexOf("PASTE") === -1 &&
+    window.supabase
+  );
+  if (CONFIGURED) sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+} catch (e) { CONFIGURED = false; sb = null; }
+
+var state = {
+  user: null,
+  profile: null,
+  courses: FALLBACK_COURSES.slice(),
+  adminApps: [],
+  adminStudents: []
+};
+
+/* ---------------- Helpers ---------------- */
+function $(id) { return document.getElementById(id); }
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function showMsg(el, type, text) {
+  if (!el) return;
+  el.className = "form-msg show " + type;
+  el.textContent = text;
+}
+function fmtDate(iso) {
+  if (!iso) return "";
+  var d = new Date(iso);
+  return d.toLocaleDateString() + " " + d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+function statusPill(st) {
+  return '<span class="status-pill st-' + esc(st) + '">' + esc(st) + "</span>";
+}
+function openWhatsApp(text) {
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
+}
+
+/* ---------------- Navigation ---------------- */
+var VIEWS = ["home", "courses", "enroll", "login", "signup", "student", "admin"];
+function showView(name) {
+  if (name === "student") {
+    if (!state.user) { showView("login"); showMsg($("loginMsg"), "info", "Please login first to open your student dashboard."); return; }
+    if (state.profile && state.profile.role === "admin") { showView("admin"); return; }
+  }
+  if (name === "admin") {
+    if (!state.user) { showView("login"); showMsg($("loginMsg"), "info", "Please login first."); return; }
+    if (!state.profile || state.profile.role !== "admin") {
+      showView("student");
+      showMsg($("dashAppMsg"), "err", "Admin access is only for the admin account.");
+      return;
+    }
+  }
+  VIEWS.forEach(function (v) { $("view-" + v).classList.toggle("hidden", v !== name); });
+  closeMenu();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (name === "login" && !CONFIGURED) {
+    showMsg($("loginMsg"), "info", "Login will start working after the Supabase setup (see README). The public website and WhatsApp enrollment already work.");
+  }
+  if (name === "signup" && !CONFIGURED) {
+    showMsg($("signupMsg"), "info", "Accounts will start working after the Supabase setup (see README). You can still enroll as a guest on WhatsApp.");
+  }
+  if (name === "student") loadStudentDashboard();
+  if (name === "admin") loadAdminDashboard();
+}
+function scrollToId(id) {
+  showView("home");
+  setTimeout(function () {
+    var el = $(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }, 60);
+}
+function closeMenu() {
+  var m = $("mobileMenu"); if (m) m.classList.remove("open");
+  var s = $("menuScrim"); if (s) s.classList.remove("open");
+  var b = $("hamburgerBtn"); if (b) b.setAttribute("aria-expanded", "false");
+}
+$("hamburgerBtn").addEventListener("click", function () {
+  var m = $("mobileMenu"); var s = $("menuScrim");
+  var willOpen = !(m && m.classList.contains("open"));
+  if (m) m.classList.toggle("open", willOpen);
+  if (s) s.classList.toggle("open", willOpen);
+  this.setAttribute("aria-expanded", willOpen ? "true" : "false");
+});
+$("menuScrim").addEventListener("click", closeMenu);
+document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+
+/* ---------------- Courses (public) ---------------- */
+var COURSE_IMAGE_FILES = [
+  ["youtube", "youtube-automation.jpg"],
+  ["digital marketing", "digital-marketing.jpg"],
+  ["copyright", "copyright-work.jpg"],
+  ["graphic design", "graphic-design.jpg"],
+  ["video editing", "video-editing.jpg"],
+  ["web development", "web-development.jpg"],
+  ["seo", "seo.jpg"],
+  ["tiktok", "tiktok-automation.jpg"],
+  ["facebook", "facebook-automation.jpg"],
+  ["e-commerce", "e-commerce.jpg"],
+  ["ecommerce", "e-commerce.jpg"],
+  ["online store", "e-commerce.jpg"]
+];
+function courseImage(course) {
+  if (course && course.image) return course.image;
+  var name = String((course && course.name) || "").toLowerCase();
+  for (var i = 0; i < COURSE_IMAGE_FILES.length; i++) {
+    if (name.indexOf(COURSE_IMAGE_FILES[i][0]) !== -1) {
+      return COURSE_IMAGE_FILES[i][1];
+    }
+  }
+  return "digital-marketing.jpg";
+}
+function courseCard(c) {
+  var meta = "";
+  if (c.fee) meta += '<span class="chip">Fee: ' + esc(c.fee) + "</span>";
+  if (c.duration) meta += '<span class="chip">' + esc(c.duration) + "</span>";
+  var img = courseImage(c);
+  return '<article class="course-card"><figure class="course-media"><img class="course-img" src="' + esc(img) + '" alt="' + esc(c.name) + ' course" loading="lazy" onerror="this.onerror=null;this.src=\'digital-marketing.jpg\'"></figure><div class="course-body"><h3>' + esc(c.name) + "</h3>" +
+    (meta ? '<div class="course-meta">' + meta + "</div>" : "") +
+    "<p>" + esc(c.description || "Practical training with full guidance. Contact us for fee and duration details.") + "</p>" +
+    '<button class="btn btn-gold" data-course="' + esc(c.name) + '" onclick="enrollCourse(this.dataset.course)">Enroll in this Course</button></div></article>';
+}
+function fillCourseSelect(sel, courses) {
+  if (!sel) return;
+  var current = sel.value;
+  sel.innerHTML = '<option value="">Select a course</option>' + courses.map(function (c) {
+    return '<option value="' + esc(c.name) + '">' + esc(c.name) + "</option>";
+  }).join("");
+  if (current) sel.value = current;
+}
+function renderPublicCourses() {
+  $("homeCourses").innerHTML = state.courses.slice(0, 9).map(courseCard).join("");
+  $("allCourses").innerHTML = state.courses.map(courseCard).join("");
+  fillCourseSelect($("gCourse"), state.courses);
+  fillCourseSelect($("wCourse"), state.courses);
+  fillCourseSelect($("dCourse"), state.courses);
+}
+function enrollCourse(name) {
+  showView("enroll");
+  ["gCourse", "wCourse", "dCourse"].forEach(function (id) {
+    var sel = $(id);
+    if (sel) sel.value = name;
+  });
+  if (state.user) {
+    $("webAppPanel").classList.remove("hidden");
+    $("guestPanel").classList.add("hidden");
+    if ($("wName") && !$("wName").value) $("wName").value = (state.profile && state.profile.full_name) || "";
+    if ($("wPhone") && !$("wPhone").value) $("wPhone").value = (state.profile && state.profile.phone) || "";
+  } else {
+    $("guestPanel").classList.remove("hidden");
+    setTimeout(function () { $("guestPanel").scrollIntoView({ behavior: "smooth", block: "center" }); }, 80);
+  }
+}
+function showGuestForm() {
+  $("guestPanel").classList.remove("hidden");
+  setTimeout(function () { $("guestPanel").scrollIntoView({ behavior: "smooth", block: "center" }); }, 60);
+}
+function studentApplyEntry() {
+  if (!state.user) {
+    showView("login");
+    showMsg($("loginMsg"), "info", "Login to your student account to submit your application on the website. New here? Create an account first.");
+    return;
+  }
+  showView("enroll");
+  $("webAppPanel").classList.remove("hidden");
+  $("guestPanel").classList.add("hidden");
+  if ($("wName") && !$("wName").value) $("wName").value = (state.profile && state.profile.full_name) || "";
+  if ($("wPhone") && !$("wPhone").value) $("wPhone").value = (state.profile && state.profile.phone) || "";
+  setTimeout(function () { $("webAppPanel").scrollIntoView({ behavior: "smooth", block: "center" }); }, 80);
+}
+
+async function loadCourses() {
+  if (CONFIGURED && sb) {
+    try {
+      var res = await sb.from("courses").select("*").order("created_at", { ascending: true });
+      if (!res.error && res.data && res.data.length) {
+        state.courses = res.data;
+      }
+    } catch (e) { /* keep fallback list */ }
+  }
+  renderPublicCourses();
+}
+
+/* ---------------- Guest enrollment (WhatsApp) ---------------- */
+$("guestForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var name = $("gName").value.trim();
+  var phone = $("gPhone").value.trim();
+  var course = $("gCourse").value;
+  var msg = $("gMsg").value.trim();
+  if (!name || !phone || !course) {
+    showMsg($("guestMsg"), "err", "Please fill your name, phone number and select a course.");
+    return;
+  }
+  var text = "Assalam-o-Alaikum! I want to enroll at HT Digital Skills.\n" +
+    "Name: " + name + "\nPhone: " + phone + "\nCourse: " + course +
+    (msg ? "\nMessage: " + msg : "");
+
+  // Open WhatsApp first so it is never blocked.
+  openWhatsApp(text);
+  showMsg($("guestMsg"), "ok", "WhatsApp is opening with your details. Just press Send there.");
+
+  // Best effort: also save the lead for the admin (never blocks WhatsApp).
+  if (CONFIGURED && sb) {
+    sb.from("applications").insert({
+      user_id: null, full_name: name, phone: phone, email: "",
+      course_name: course, message: msg, source: "guest_whatsapp", status: "new"
+    }).then(function () {}, function () {});
+  }
+});
+
+/* ---------------- Logged-in website application ---------------- */
+$("webAppForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!state.user) { showView("login"); return; }
+  if (!CONFIGURED || !sb) {
+    showMsg($("webAppMsg"), "err", "Online submission needs the Supabase setup first. Please use WhatsApp for now.");
+    return;
+  }
+  var payload = {
+    user_id: state.user.id,
+    full_name: $("wName").value.trim(),
+    phone: $("wPhone").value.trim(),
+    email: state.user.email || "",
+    course_name: $("wCourse").value,
+    message: $("wMsg").value.trim(),
+    source: "website",
+    status: "new"
+  };
+  if (!payload.full_name || !payload.phone || !payload.course_name) {
+    showMsg($("webAppMsg"), "err", "Please fill your name, phone number and select a course.");
+    return;
+  }
+  var res = await sb.from("applications").insert(payload);
+  if (res.error) {
+    showMsg($("webAppMsg"), "err", "Could not submit: " + res.error.message);
+    return;
+  }
+  showMsg($("webAppMsg"), "ok", "Application submitted successfully. Our team will contact you soon.");
+  e.target.reset();
+});
+$("webAppWaBtn").addEventListener("click", function () {
+  var text = "Assalam-o-Alaikum! I want to enroll at HT Digital Skills.\n" +
+    "Name: " + $("wName").value.trim() + "\nPhone: " + $("wPhone").value.trim() +
+    "\nCourse: " + $("wCourse").value +
+    ($("wMsg").value.trim() ? "\nMessage: " + $("wMsg").value.trim() : "");
+  openWhatsApp(text);
+});
+
+/* ---------------- Auth ---------------- */
+function setAuthUI() {
+  var area = $("authArea");
+  var mArea = $("mobileAuthArea");
+  if (state.user) {
+    var name = (state.profile && state.profile.full_name) || state.user.email || "Account";
+    var dashView = state.profile && state.profile.role === "admin" ? "admin" : "student";
+    area.innerHTML =
+      '<button class="btn btn-outline btn-sm" onclick="showView(\'' + dashView + '\')">Dashboard</button>' +
+      '<button class="btn btn-gold btn-sm" onclick="logout()">Logout</button>';
+    mArea.innerHTML =
+      '<a href="#" onclick="showView(\'' + dashView + '\');closeMenu();return false;">My Dashboard (' + esc(name) + ")</a>" +
+      '<a href="#" onclick="logout();closeMenu();return false;">Logout</a>';
+  } else {
+    area.innerHTML =
+      '<button class="btn btn-outline btn-sm" onclick="showView(\'login\')">Login</button>' +
+      '<button class="btn btn-gold btn-sm" onclick="showView(\'signup\')">Sign Up</button>';
+    mArea.innerHTML =
+      '<a class="auth-action auth-login" href="#" onclick="showView(\'login\');closeMenu();return false;">Login</a>' +
+      '<a class="auth-action auth-signup" href="#" onclick="showView(\'signup\');closeMenu();return false;">Sign Up</a>';
+  }
+}
+
+async function loadProfile(user) {
+  if (!user || !sb) { state.profile = null; return null; }
+  var res = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle();
+  if (res.data) { state.profile = res.data; return res.data; }
+  // Profile missing (for example, created before the trigger existed) — create it.
+  var p = {
+    id: user.id,
+    full_name: (user.user_metadata && user.user_metadata.full_name) || "",
+    phone: (user.user_metadata && user.user_metadata.phone) || "",
+    role: "student"
+  };
+  var ins = await sb.from("profiles").insert(p);
+  state.profile = ins.error ? p : p;
+  return state.profile;
+}
+
+async function afterLogin(user) {
+  state.user = user;
+  await loadProfile(user);
+  setAuthUI();
+  if (state.profile && state.profile.role === "admin") showView("admin");
+  else showView("student");
+}
+
+$("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!CONFIGURED || !sb) {
+    showMsg($("loginMsg"), "err", "Login is not active yet. Please complete the Supabase setup (see README), or enroll as a guest on WhatsApp.");
+    return;
+  }
+  var email = $("lEmail").value.trim();
+  var pass = $("lPass").value;
+  var res = await sb.auth.signInWithPassword({ email: email, password: pass });
+  if (res.error) {
+    showMsg($("loginMsg"), "err", "Login failed: " + res.error.message);
+    return;
+  }
+  showMsg($("loginMsg"), "ok", "Login successful. Opening your dashboard...");
+  await afterLogin(res.data.user);
+});
+
+$("signupForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!CONFIGURED || !sb) {
+    showMsg($("signupMsg"), "err", "Accounts are not active yet. Please complete the Supabase setup (see README), or enroll as a guest on WhatsApp.");
+    return;
+  }
+  var name = $("sName").value.trim();
+  var phone = $("sPhone").value.trim();
+  var email = $("sEmail").value.trim();
+  var pass = $("sPass").value;
+  var res = await sb.auth.signUp({
+    email: email,
+    password: pass,
+    options: { data: { full_name: name, phone: phone } }
+  });
+  if (res.error) {
+    showMsg($("signupMsg"), "err", "Signup failed: " + res.error.message);
+    return;
+  }
+  if (res.data.session && res.data.user) {
+    await afterLogin(res.data.user);
+    showMsg($("dashAppMsg"), "ok", "Account created successfully. You can submit your application here.");
+  } else {
+    showMsg($("signupMsg"), "ok", "Account created. If email confirmation is on, please confirm your email, then login.");
+    e.target.reset();
+  }
+});
+
+async function logout() {
+  if (sb) { try { await sb.auth.signOut(); } catch (e) {} }
+  state.user = null;
+  state.profile = null;
+  setAuthUI();
+  showView("home");
+}
+
+/* ---------------- Student dashboard ---------------- */
+async function loadStudentDashboard() {
+  if (!state.user) return;
+  var p = state.profile || {};
+  $("studentWelcome").textContent = "Welcome, " + (p.full_name || "Student");
+  $("studentMeta").textContent = (state.user.email || "") + (p.phone ? " • " + p.phone : "");
+  fillCourseSelect($("dCourse"), state.courses);
+  await loadMyApplications();
+}
+async function loadMyApplications() {
+  var box = $("myApps");
+  if (!CONFIGURED || !sb || !state.user) { box.innerHTML = '<div class="empty-note">Not available.</div>'; return; }
+  var res = await sb.from("applications").select("*").eq("user_id", state.user.id).order("created_at", { ascending: false });
+  if (res.error) { box.innerHTML = '<div class="empty-note">Could not load applications.</div>'; return; }
+  if (!res.data.length) { box.innerHTML = '<div class="empty-note">No applications yet. Submit your first application.</div>'; return; }
+  box.innerHTML = res.data.map(function (a) {
+    return '<div class="list-item"><div class="li-top"><span class="li-name">' + esc(a.course_name) + "</span>" + statusPill(a.status) + "</div>" +
+      '<div class="li-meta">' + fmtDate(a.created_at) + (a.message ? " • " + esc(a.message) : "") + "</div></div>";
+  }).join("");
+}
+$("dashAppForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!state.user || !sb) { showView("login"); return; }
+  var p = state.profile || {};
+  var payload = {
+    user_id: state.user.id,
+    full_name: p.full_name || "",
+    phone: p.phone || "",
+    email: state.user.email || "",
+    course_name: $("dCourse").value,
+    message: $("dMsg").value.trim(),
+    source: "website",
+    status: "new"
+  };
+  if (!payload.course_name) { showMsg($("dashAppMsg"), "err", "Please select a course."); return; }
+  var res = await sb.from("applications").insert(payload);
+  if (res.error) { showMsg($("dashAppMsg"), "err", "Could not submit: " + res.error.message); return; }
+  showMsg($("dashAppMsg"), "ok", "Application submitted successfully.");
+  e.target.reset();
+  await loadMyApplications();
+});
+
+/* ---------------- Admin dashboard ---------------- */
+async function loadAdminDashboard() {
+  if (!sb || !state.user) return;
+  $("adminMeta").textContent = "Logged in as admin: " + (state.user.email || "");
+  await Promise.all([loadAdminApplications(), loadAdminStudents(), loadAdminCourses()]);
+  updateCounts();
+}
+function updateCounts() {
+  var apps = state.adminApps;
+  $("countTotal").textContent = apps.length;
+  $("countNew").textContent = apps.filter(function (a) { return a.status === "new"; }).length;
+  $("countEnrolled").textContent = apps.filter(function (a) { return a.status === "enrolled"; }).length;
+  $("countCourses").textContent = state.courses.length;
+}
+async function loadAdminApplications() {
+  var res = await sb.from("applications").select("*").order("created_at", { ascending: false });
+  state.adminApps = res.error ? [] : (res.data || []);
+  renderAdminApplications();
+  updateCounts();
+}
+function renderAdminApplications() {
+  var filter = $("appFilter").value;
+  var rows = state.adminApps.filter(function (a) { return filter === "all" || a.status === filter; });
+  $("adminAppsEmpty").classList.toggle("hidden", rows.length > 0);
+  $("adminAppsBody").innerHTML = rows.map(function (a) {
+    var opts = ["new", "contacted", "enrolled", "rejected"].map(function (s) {
+      return '<option value="' + s + '"' + (a.status === s ? " selected" : "") + ">" + s + "</option>";
+    }).join("");
+    return "<tr><td>" + fmtDate(a.created_at) + "</td>" +
+      "<td><strong>" + esc(a.full_name) + "</strong><br>" + esc(a.phone) + (a.email ? "<br>" + esc(a.email) : "") + (a.message ? "<br><em>" + esc(a.message) + "</em>" : "") + "</td>" +
+      "<td>" + esc(a.course_name) + "</td>" +
+      "<td>" + (a.source === "guest_whatsapp" ? "WhatsApp Guest" : "Website") + "</td>" +
+      "<td>" + statusPill(a.status) + "</td>" +
+      '<td><div class="row-actions"><select onchange="changeAppStatus(' + a.id + ', this.value)">' + opts + "</select>" +
+      '<button class="btn btn-danger icon-btn" onclick="deleteApp(' + a.id + ')">Delete</button></div></td></tr>';
+  }).join("");
+}
+async function changeAppStatus(id, status) {
+  var res = await sb.from("applications").update({ status: status }).eq("id", id);
+  if (res.error) { showMsg($("adminMsg"), "err", "Status update failed: " + res.error.message); return; }
+  showMsg($("adminMsg"), "ok", "Application status updated.");
+  await loadAdminApplications();
+}
+async function deleteApp(id) {
+  if (!confirm("Delete this application?")) return;
+  var res = await sb.from("applications").delete().eq("id", id);
+  if (res.error) { showMsg($("adminMsg"), "err", "Delete failed: " + res.error.message); return; }
+  showMsg($("adminMsg"), "ok", "Application deleted.");
+  await loadAdminApplications();
+}
+async function loadAdminStudents() {
+  var res = await sb.from("profiles").select("*").eq("role", "student").order("created_at", { ascending: false });
+  state.adminStudents = res.error ? [] : (res.data || []);
+  var box = $("studentsList");
+  if (!state.adminStudents.length) { box.innerHTML = '<div class="empty-note">No registered students yet.</div>'; return; }
+  box.innerHTML = state.adminStudents.map(function (s) {
+    var count = state.adminApps.filter(function (a) { return a.user_id === s.id; }).length;
+    return '<div class="list-item"><div class="li-top"><span class="li-name">' + esc(s.full_name || "Student") + "</span>" +
+      '<span class="chip">' + count + " application(s)</span></div>" +
+      '<div class="li-meta">' + esc(s.phone || "") + " • Joined " + fmtDate(s.created_at) + "</div></div>";
+  }).join("");
+}
+async function loadAdminCourses() {
+  await loadCourses();
+  renderAdminCourses();
+  updateCounts();
+}
+function renderAdminCourses() {
+  var box = $("coursesList");
+  if (!state.courses.length) { box.innerHTML = '<div class="empty-note">No courses yet.</div>'; return; }
+  box.innerHTML = state.courses.map(function (c) {
+    return '<div class="list-item"><div class="li-top"><span class="li-name">' + esc(c.name) + "</span>" +
+      '<span class="row-actions"><button class="btn btn-outline icon-btn" onclick="editCourse(' + c.id + ')">Edit</button>' +
+      '<button class="btn btn-danger icon-btn" onclick="deleteCourse(' + c.id + ')">Delete</button></span></div>' +
+      '<div class="li-meta">' + (c.fee ? "Fee: " + esc(c.fee) + " • " : "") + (c.duration ? esc(c.duration) : "") + "</div></div>";
+  }).join("");
+}
+$("courseForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!sb) return;
+  var id = $("cId").value;
+  var payload = {
+    name: $("cName").value.trim(),
+    fee: $("cFee").value.trim(),
+    duration: $("cDuration").value.trim(),
+    description: $("cDesc").value.trim()
+  };
+  if (!payload.name) { showMsg($("courseMsg"), "err", "Course name is required."); return; }
+  var res;
+  if (id) res = await sb.from("courses").update(payload).eq("id", id);
+  else res = await sb.from("courses").insert(payload);
+  if (res.error) { showMsg($("courseMsg"), "err", "Could not save course: " + res.error.message); return; }
+  showMsg($("courseMsg"), "ok", id ? "Course updated. The public website is updated too." : "Course added. The public website is updated too.");
+  resetCourseForm();
+  await loadAdminCourses();
+});
+function editCourse(id) {
+  var c = state.courses.find(function (x) { return String(x.id) === String(id); });
+  if (!c) return;
+  $("cId").value = c.id;
+  $("cName").value = c.name || "";
+  $("cFee").value = c.fee || "";
+  $("cDuration").value = c.duration || "";
+  $("cDesc").value = c.description || "";
+  $("courseSaveBtn").textContent = "Save Changes";
+  $("courseCancelBtn").classList.remove("hidden");
+  $("courseForm").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+async function deleteCourse(id) {
+  if (!confirm("Delete this course? It will be removed from the public website.")) return;
+  var res = await sb.from("courses").delete().eq("id", id);
+  if (res.error) { showMsg($("courseMsg"), "err", "Delete failed: " + res.error.message); return; }
+  showMsg($("courseMsg"), "ok", "Course deleted.");
+  await loadAdminCourses();
+}
+function resetCourseForm() {
+  $("courseForm").reset();
+  $("cId").value = "";
+  $("courseSaveBtn").textContent = "Add Course";
+  $("courseCancelBtn").classList.add("hidden");
+}
+
+/* ---------------- Init ---------------- */
+(async function init() {
+  renderPublicCourses();
+  await loadCourses();
+  setAuthUI();
+  if (CONFIGURED && sb) {
+    var sess = await sb.auth.getSession();
+    if (sess.data && sess.data.session && sess.data.session.user) {
+      state.user = sess.data.session.user;
+      await loadProfile(state.user);
+      setAuthUI();
+    }
+    sb.auth.onAuthStateChange(async function (event, session) {
+      if (session && session.user) {
+        state.user = session.user;
+        await loadProfile(state.user);
+      } else {
+        state.user = null;
+        state.profile = null;
+      }
+      setAuthUI();
+    });
+  }
+})();
+</script>
+</body>
+</html>
