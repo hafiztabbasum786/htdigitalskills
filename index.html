@@ -232,6 +232,8 @@
   .panel h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;color:var(--gold-2);text-align:center}
   .panel .panel-sub{color:var(--muted);font-size:.9rem;text-align:center;margin:6px 0 20px}
   .field{margin-bottom:16px}
+  .field .help-text{font-size:.78rem;color:var(--muted);margin-top:5px;line-height:1.45}
+  .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
   .form-msg{border-radius:10px;padding:12px 14px;font-size:.9rem;margin-bottom:16px;display:none}
   .form-msg.show{display:block}
   .form-msg.err{background:rgba(224,101,95,.12);border:1px solid var(--danger);color:#f0b3af}
@@ -673,6 +675,12 @@
 
       <div class="form-msg" id="adminMsg" style="margin-top:18px"></div>
 
+      <div class="admin-tabs">
+        <button class="btn btn-gold btn-sm" id="adminTabMainBtn" type="button" onclick="showAdminTab('main')">Dashboard</button>
+        <button class="btn btn-outline btn-sm" id="adminTabSettingsBtn" type="button" onclick="showAdminTab('settings')">Website Settings</button>
+      </div>
+
+      <div id="adminTabMain">
       <div class="cards-row">
         <div class="mini-card"><div class="num gold-text" id="countTotal">0</div><div class="lbl">Total Applications</div></div>
         <div class="mini-card"><div class="num gold-text" id="countNew">0</div><div class="lbl">New</div></div>
@@ -718,10 +726,28 @@
             <div class="field"><label for="cFee">Fee (optional)</label><input id="cFee" placeholder="e.g. PKR 15,000"></div>
             <div class="field"><label for="cDuration">Duration (optional)</label><input id="cDuration" placeholder="e.g. 2 Months"></div>
             <div class="field"><label for="cDesc">Description (optional)</label><textarea id="cDesc" rows="3" placeholder="Short course description"></textarea></div>
+            <div class="field"><label for="cImage">Image URL (optional)</label><input id="cImage" placeholder="seo.jpg or https://..."><div class="help-text">Paste an image link (URL), or a file name from the repository like seo.jpg</div></div>
             <button class="btn btn-gold" type="submit" style="width:100%" id="courseSaveBtn">Add Course</button>
             <button class="btn btn-outline hidden" type="button" id="courseCancelBtn" style="width:100%;margin-top:8px" onclick="resetCourseForm()">Cancel Edit</button>
           </form>
           <div id="coursesList" style="margin-top:18px"></div>
+        </div>
+      </div>
+      </div><!-- /adminTabMain -->
+
+      <div id="adminTabSettings" class="hidden">
+        <div class="box" style="margin-top:26px">
+          <h4>Website Settings</h4>
+          <p class="box-sub">Change your academy name, contact details and logo here. Changes appear on the public website automatically.</p>
+          <div class="form-msg" id="settingsMsg"></div>
+          <form id="settingsForm">
+            <div class="field"><label for="setName">Academy Name</label><input id="setName" placeholder="HT Digital Skills"></div>
+            <div class="field"><label for="setPhone">Phone / WhatsApp Number</label><input id="setPhone" placeholder="+92 304 6004229"><div class="help-text">All WhatsApp buttons on the website will use this number.</div></div>
+            <div class="field"><label for="setEmail">Email</label><input id="setEmail" type="email" placeholder="htdigitalskills@gmail.com"></div>
+            <div class="field"><label for="setWebsite">Website Name</label><input id="setWebsite" placeholder="htdigitalskills.vercel.app"><div class="help-text">Shown in the footer as your website address.</div></div>
+            <div class="field"><label for="setLogo">Logo Image URL</label><input id="setLogo" placeholder="https://..."><div class="help-text">Paste an image link (URL). Leave empty to keep the current logo.</div></div>
+            <button class="btn btn-gold" type="submit" style="width:100%">Save Settings</button>
+          </form>
         </div>
       </div>
     </div>
@@ -734,7 +760,7 @@
     <div class="footer-grid">
       <div>
         <img class="footer-logo-img" src="logo.png" alt="HT Digital Skills logo" width="62" height="62">
-        <h5 style="margin-top:14px">HT DIGITAL SKILLS</h5>
+        <h5 id="footBrand" style="margin-top:14px">HT DIGITAL SKILLS</h5>
         <p>Learn &bull; Practice &bull; Connect &bull; Succeed.<br>Practical digital skills for real careers.</p>
       </div>
       <div>
@@ -748,9 +774,9 @@
       </div>
       <div>
         <h5>Contact</h5>
-        <p>Phone / WhatsApp: <a href="https://wa.me/923046004229" target="_blank" rel="noopener">+92 304 6004229</a></p>
-        <p style="margin-top:6px">Email: <a href="mailto:htdigitalskills@gmail.com">htdigitalskills@gmail.com</a></p>
-        <p style="margin-top:6px">Web: <a href="https://htdigitalskills.vercel.app" target="_blank" rel="noopener">htdigitalskills.vercel.app</a></p>
+        <p>Phone / WhatsApp: <a id="footPhone" href="https://wa.me/923046004229" target="_blank" rel="noopener">+92 304 6004229</a></p>
+        <p style="margin-top:6px">Email: <a id="footEmail" href="mailto:htdigitalskills@gmail.com">htdigitalskills@gmail.com</a></p>
+        <p style="margin-top:6px">Web: <a id="footWeb" href="https://htdigitalskills.vercel.app" target="_blank" rel="noopener">htdigitalskills.vercel.app</a></p>
         <p style="margin-top:6px">Founder &amp; CEO: Hafiz Tabbasum</p>
       </div>
     </div>
@@ -1267,14 +1293,24 @@ $("courseForm").addEventListener("submit", async function (e) {
     name: $("cName").value.trim(),
     fee: $("cFee").value.trim(),
     duration: $("cDuration").value.trim(),
-    description: $("cDesc").value.trim()
+    description: $("cDesc").value.trim(),
+    image: $("cImage").value.trim()
   };
   if (!payload.name) { showMsg($("courseMsg"), "err", "Course name is required."); return; }
   var res;
   if (id) res = await sb.from("courses").update(payload).eq("id", id);
   else res = await sb.from("courses").insert(payload);
+  var imageNote = "";
+  if (res.error && payload.image) {
+    // The courses.image column does not exist yet — save without the
+    // image link so the course still saves, and tell the admin what to do.
+    var withoutImage = { name: payload.name, fee: payload.fee, duration: payload.duration, description: payload.description };
+    if (id) res = await sb.from("courses").update(withoutImage).eq("id", id);
+    else res = await sb.from("courses").insert(withoutImage);
+    if (!res.error) imageNote = " Note: the image link was not stored yet — run the settings-sql.sql file in Supabase once, then edit this course to add the image.";
+  }
   if (res.error) { showMsg($("courseMsg"), "err", "Could not save course: " + res.error.message); return; }
-  showMsg($("courseMsg"), "ok", id ? "Course updated. The public website is updated too." : "Course added. The public website is updated too.");
+  showMsg($("courseMsg"), "ok", (id ? "Course updated. The public website is updated too." : "Course added. The public website is updated too.") + imageNote);
   resetCourseForm();
   await loadAdminCourses();
 });
@@ -1286,6 +1322,7 @@ function editCourse(id) {
   $("cFee").value = c.fee || "";
   $("cDuration").value = c.duration || "";
   $("cDesc").value = c.description || "";
+  $("cImage").value = c.image || "";
   $("courseSaveBtn").textContent = "Save Changes";
   $("courseCancelBtn").classList.remove("hidden");
   $("courseForm").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -1304,10 +1341,140 @@ function resetCourseForm() {
   $("courseCancelBtn").classList.add("hidden");
 }
 
+/* ---------------- Website settings (public site) ----------------
+   The admin can change these from Admin Dashboard -> Website
+   Settings. If the site_settings table is missing or empty,
+   the built-in defaults below stay — the page never breaks. */
+var SITE_SETTINGS = {};
+
+function waDigitsOf(phone) {
+  var d = String(phone == null ? "" : phone).replace(/\D/g, "");
+  if (!d) return "";
+  if (d.indexOf("92") === 0) return d;
+  if (d.charAt(0) === "0") return "92" + d.slice(1);
+  return "92" + d;
+}
+
+function applySiteSettings() {
+  try {
+    var s = SITE_SETTINGS;
+
+    var name = String(s.academy_name || "").trim();
+    if (name) {
+      var bn = document.querySelector(".brand-name .bn-1");
+      if (bn) bn.textContent = name;
+      var heroTitle = document.querySelector(".hero h1");
+      if (heroTitle) heroTitle.textContent = name;
+      var fb = $("footBrand");
+      if (fb) fb.textContent = name;
+      var cp = document.querySelector("footer .copyright");
+      if (cp && cp.textContent.indexOf("HT Digital Skills") !== -1) {
+        cp.textContent = cp.textContent.replace("HT Digital Skills", name);
+      }
+    }
+
+    var phone = String(s.phone || "").trim();
+    if (phone) {
+      var digits = waDigitsOf(phone);
+      if (digits) {
+        WA_NUMBER = digits; // guest form + all "open WhatsApp" actions
+        var links = document.querySelectorAll('a[href^="https://wa.me/"]');
+        for (var i = 0; i < links.length; i++) {
+          var a = links[i];
+          a.href = a.href.replace(/^https:\/\/wa\.me\/\d+/, "https://wa.me/" + digits);
+          // Buttons that show the number itself get the new number too.
+          if (/^\+?[\d\s()-]+$/.test(a.textContent.trim())) a.textContent = phone;
+        }
+      }
+      var fp = $("footPhone");
+      if (fp) fp.textContent = phone;
+    }
+
+    var email = String(s.email || "").trim();
+    if (email) {
+      var fe = $("footEmail");
+      if (fe) { fe.href = "mailto:" + email; fe.textContent = email; }
+    }
+
+    var web = String(s.website_name || "").trim();
+    if (web) {
+      var fw = $("footWeb");
+      if (fw) {
+        fw.textContent = web;
+        fw.href = /^https?:\/\//i.test(web) ? web : "https://" + web;
+      }
+    }
+
+    var logo = String(s.logo_url || "").trim();
+    if (logo) {
+      var logos = document.querySelectorAll(".brand-logo-img, .footer-logo-img");
+      for (var j = 0; j < logos.length; j++) logos[j].src = logo;
+    }
+  } catch (e) { /* settings are optional — never break the page */ }
+}
+
+async function loadSiteSettings() {
+  if (!CONFIGURED || !sb) return;
+  try {
+    var res = await sb.from("site_settings").select("key, value");
+    if (res.error || !res.data) return;
+    res.data.forEach(function (row) {
+      if (row && row.key) SITE_SETTINGS[row.key] = row.value == null ? "" : String(row.value);
+    });
+    applySiteSettings();
+  } catch (e) { /* keep the built-in defaults */ }
+}
+
+/* ---------------- Admin: Website Settings tab ---------------- */
+function showAdminTab(which) {
+  var isSettings = which === "settings";
+  $("adminTabMain").classList.toggle("hidden", isSettings);
+  $("adminTabSettings").classList.toggle("hidden", !isSettings);
+  $("adminTabMainBtn").className = "btn btn-sm " + (isSettings ? "btn-outline" : "btn-gold");
+  $("adminTabSettingsBtn").className = "btn btn-sm " + (isSettings ? "btn-gold" : "btn-outline");
+  if (isSettings) loadSettingsForm();
+}
+
+async function loadSettingsForm() {
+  if (CONFIGURED && sb) {
+    try {
+      var res = await sb.from("site_settings").select("key, value");
+      if (!res.error && res.data) {
+        res.data.forEach(function (row) {
+          if (row && row.key) SITE_SETTINGS[row.key] = row.value == null ? "" : String(row.value);
+        });
+      }
+    } catch (e) { /* keep whatever we already have */ }
+  }
+  $("setName").value = SITE_SETTINGS.academy_name || "";
+  $("setPhone").value = SITE_SETTINGS.phone || "";
+  $("setEmail").value = SITE_SETTINGS.email || "";
+  $("setWebsite").value = SITE_SETTINGS.website_name || "";
+  $("setLogo").value = SITE_SETTINGS.logo_url || "";
+}
+
+$("settingsForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  if (!sb) { showMsg($("settingsMsg"), "err", "Settings need the Supabase connection first."); return; }
+  var rows = [
+    { key: "academy_name", value: $("setName").value.trim() },
+    { key: "phone", value: $("setPhone").value.trim() },
+    { key: "email", value: $("setEmail").value.trim() },
+    { key: "website_name", value: $("setWebsite").value.trim() },
+    { key: "logo_url", value: $("setLogo").value.trim() }
+  ];
+  var res = await sb.from("site_settings").upsert(rows, { onConflict: "key" });
+  if (res.error) { showMsg($("settingsMsg"), "err", "Could not save settings: " + res.error.message); return; }
+  rows.forEach(function (r) { SITE_SETTINGS[r.key] = r.value; });
+  applySiteSettings();
+  showMsg($("settingsMsg"), "ok", "Settings saved. The public website is updated.");
+});
+
 /* ---------------- Init ---------------- */
 (async function init() {
   renderPublicCourses();
   await loadCourses();
+  loadSiteSettings();
   setAuthUI();
   if (CONFIGURED && sb) {
     var sess = await sb.auth.getSession();
